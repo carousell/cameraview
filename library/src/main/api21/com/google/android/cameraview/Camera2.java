@@ -762,7 +762,9 @@ class Camera2 extends CameraViewImpl {
                         public void onCaptureCompleted(@NonNull CameraCaptureSession session,
                                 @NonNull CaptureRequest request,
                                 @NonNull TotalCaptureResult result) {
-                            unlockFocus();
+                            if (mCaptureSession != null){
+                                unlockFocus();
+                            }
                         }
                     }, null);
             mCameraHandler.removeCallbacks(mReturnToContinuousAFRunnable);
