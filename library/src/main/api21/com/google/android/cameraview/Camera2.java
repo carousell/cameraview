@@ -150,7 +150,9 @@ class Camera2 extends CameraViewImpl {
 
         @Override
         public void onReady() {
-            captureStillPicture();
+            if (isCameraOpened()){
+                captureStillPicture();
+            }
         }
 
     };
@@ -762,7 +764,9 @@ class Camera2 extends CameraViewImpl {
                         public void onCaptureCompleted(@NonNull CameraCaptureSession session,
                                 @NonNull CaptureRequest request,
                                 @NonNull TotalCaptureResult result) {
-                            unlockFocus();
+                            if (isCameraOpened()){
+                                unlockFocus();
+                            }
                         }
                     }, null);
             mCameraHandler.removeCallbacks(mReturnToContinuousAFRunnable);
